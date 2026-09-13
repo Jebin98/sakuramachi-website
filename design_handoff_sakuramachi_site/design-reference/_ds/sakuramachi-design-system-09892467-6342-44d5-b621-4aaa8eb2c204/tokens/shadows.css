@@ -1,0 +1,13 @@
+:root{
+  /* Shadows are warm-tinted (mixed from --cocoa-900, never black) and diffuse — soft-box studio light. */
+  --shadow-xs:0 1px 2px rgba(46,26,13,.06);
+  --shadow-sm:0 2px 6px rgba(46,26,13,.07);
+  --shadow-md:0 6px 18px rgba(46,26,13,.09);
+  --shadow-lg:0 14px 38px rgba(46,26,13,.11);
+  --shadow-xl:0 26px 64px rgba(46,26,13,.14);
+  --shadow-inset:inset 0 1px 0 rgba(255,255,255,.7);
+  /* Focus ring: sakura, offset, never a browser-blue outline */
+  --ring-focus:0 0 0 3px var(--sakura-200),0 0 0 4.5px var(--sakura-500);
+  --border-hairline:1px solid var(--kinako-200);
+  --border-sakura:1px solid var(--sakura-200);
+}

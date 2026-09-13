@@ -1,0 +1,23 @@
+:root{
+  /* 4px base. --space-5 (20px) is the default gutter inside cards. */
+  --space-0:0px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-24:96px;
+  --space-32:128px;
+
+  /* Clears a landscape notch or a rounded corner on the full-bleed header, ticker and
+     footer. One inset for both sides keeps the page optically centred. */
+  --page-gutter:calc(24px + max(env(safe-area-inset-left,0px),env(safe-area-inset-right,0px)));
+  --page-max:1180px;
+  --prose-max:62ch;
+}

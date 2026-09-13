@@ -1,0 +1,55 @@
+/* Semantic aliases. Consume these in components; reach for raw ramps only for one-offs. */
+:root{
+  --bg-page:var(--cream-50);
+  --bg-page-alt:var(--sakura-50);
+  --surface-card:var(--white);
+  --surface-sunken:var(--cream-100);
+  --surface-raised:var(--white);
+  --surface-accent:var(--sakura-100);
+  --surface-inverse:var(--cocoa-900);
+
+  --text-heading:var(--cocoa-900);
+  --text-body:var(--cocoa-700);
+  --text-muted:var(--kinako-700);
+  --text-inverse:var(--cream-50);
+  /* butter-300 clears 4.5:1 on every dark ground in the system — 12.5:1 on cocoa-900 ink,
+     6.8:1 on hojicha-700 — where cocoa-300 only worked on the ink. */
+  --text-inverse-muted:var(--butter-300);
+  --text-accent:var(--sakura-700);
+  --text-price:var(--cocoa-900);
+
+  --border-subtle:var(--kinako-200);
+  --border-strong:var(--cocoa-300);
+  --border-accent:var(--sakura-300);
+
+  --action-primary-bg:var(--sakura-500);
+  --action-primary-bg-hover:var(--sakura-600);
+  --action-primary-bg-active:var(--sakura-700);
+  --action-primary-fg:var(--white);
+
+  --action-secondary-bg:var(--hojicha-700);
+  --action-secondary-bg-hover:var(--hojicha-500);
+  --action-secondary-fg:var(--cream-50);
+
+  --action-ghost-fg:var(--cocoa-900);
+  --action-ghost-bg-hover:var(--sakura-100);
+
+  --state-success:var(--matcha-700);
+  --state-success-bg:var(--matcha-100);
+  --state-warning:var(--butter-700);
+  --state-warning-bg:var(--butter-100);
+  --state-danger:var(--ichigo-600);
+  --state-danger-bg:var(--ichigo-100);
+  --state-info:var(--sakura-600);
+  --state-info-bg:var(--sakura-100);
+
+  --link:var(--sakura-700);
+  --link-hover:var(--sakura-500);
+
+  /* Signature backgrounds */
+  --wash-sakura:radial-gradient(120% 90% at 50% 40%,var(--sakura-200) 0%,var(--sakura-100) 42%,var(--cream-50) 78%);
+  --wash-cream:linear-gradient(180deg,var(--cream-50) 0%,var(--cream-100) 100%);
+  --scrim-photo:linear-gradient(180deg,rgba(46,26,13,0) 35%,rgba(46,26,13,.58) 100%); /* @kind color */
+  /* Social export frames only — dense enough to carry display type across the lower half. */
+  --scrim-photo-strong:linear-gradient(180deg,rgba(46,26,13,0) 22%,rgba(46,26,13,.55) 58%,rgba(46,26,13,.88) 100%); /* @kind color */
+}

@@ -1,0 +1,79 @@
+/* Palette sampled from the hand-drawn logo and the product photography in assets/photography. */
+:root{
+  /* Sakura — the pink wash behind the logo mark; the brand's signature */
+  --sakura-50:#FFF8FA;
+  --sakura-100:#FDEDF2;
+  --sakura-200:#FAD9E3;
+  --sakura-300:#F4BCCE;
+  --sakura-400:#EC97B3;
+  --sakura-500:#E0769A;
+  --sakura-600:#C55A7E;
+  --sakura-700:#9E4362;
+
+  /* Ichigo — the strawberry red from the logo and every shortcake */
+  --ichigo-100:#FBDDDE;
+  --ichigo-300:#F09296;
+  --ichigo-500:#DC3A44;
+  --ichigo-600:#BC2B34;
+  --ichigo-700:#8E1F26;
+
+  /* Cream — sponge, whipped cream, paper boxes. The default ground. */
+  --cream-50:#FFFDF8;
+  --cream-100:#FBF5EA;
+  --cream-200:#F5E9D4;
+  --cream-300:#EDD9AE;
+  --cream-400:#E0C58C;
+
+  /* Matcha — the green tea sponge */
+  --matcha-100:#EDF1DC;
+  --matcha-300:#C3CE8E;
+  --matcha-500:#8E9E46;
+  --matcha-700:#5D6A2C;
+
+  /* Cocoa — chocolate crumb, buttercream, and the ink of the hand lettering.
+     Pulled red and warm (a ganache brown) so it sits beside hojicha's amber
+     without either reading as a neutral. */
+  --cocoa-100:#F1DFD4;
+  --cocoa-300:#B98A6A;
+  --cocoa-500:#834B2E;
+  --cocoa-700:#56301B;
+  --cocoa-900:#2E1A0D;
+
+  /* Butter — browned butter and egg yolk: the madeleine shell, the shortcake sponge,
+     the crumb of the banana bread. Paler and softer than kinpaku gold, which is metal.
+     Yolk-gold reading, chosen over creamed/browned/straw alternatives. */
+  --butter-100:#FDF4D9;
+  --butter-300:#F4DE99;
+  --butter-500:#E3C356;
+  --butter-700:#85640E;
+
+  /* Hojicha — roasted tea. The buttercream between the matcha layers.
+     Warmer and redder than cocoa, which is why it needs its own ramp. */
+  --hojicha-100:#F6E7DA;
+  --hojicha-300:#D9A97E;
+  --hojicha-500:#A4622C;
+  --hojicha-700:#6E3D15;
+
+  /* Kinpaku — the gold cake board under every whole cake. Accent only, never a surface.
+     Not a flavour: it never appears on the flavour card or in a FlavourTag. */
+  --gold-300:#E3C87A;
+  --gold-500:#C9A227;
+
+  /* Kinako — roasted-soy tan. The system's neutral ramp: every step carries a cocoa hue,
+     so nothing in Sakuramachi is ever a grey. Replaces the old --ash-* greys entirely. */
+  --kinako-50:#FBF7F1;
+  --kinako-100:#F4EBDE;
+  --kinako-200:#E8D9C3;
+  --kinako-300:#D4BD9D;   /* non-text: dividers, dotted leaders */
+  --kinako-400:#A98D67;   /* non-text: separators, disabled glyphs */
+  --kinako-500:#7B6244;   /* text-safe: 5.2:1 on cream-50 */
+  --kinako-700:#57432C;   /* text-safe: 8.3:1 on cream-50 — the muted-text default */
+
+  /* Tinted surface neutrals — the variation that replaces a second grey.
+     Use when a panel needs to read as "quiet" but belongs to a flavour. */
+  --tint-sakura:#FBF1F4;
+  --tint-matcha:#F3F5EA;
+  --tint-hojicha:#FAF2EA;
+
+  --white:#FFFFFF;
+}

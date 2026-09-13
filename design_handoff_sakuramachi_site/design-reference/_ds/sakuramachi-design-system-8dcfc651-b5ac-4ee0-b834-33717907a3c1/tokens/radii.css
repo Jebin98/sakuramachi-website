@@ -1,0 +1,8 @@
+:root{
+  --radius-xs:4px;--radius-sm:8px;--radius-md:14px;--radius-lg:22px;--radius-xl:32px;
+  --radius-pill:999px;--radius-circle:50%;
+  /* "Sketch" radii: deliberately uneven, borrowed from the wobble of the drawn outline.
+     Use on decorative surfaces (photo frames, callouts) — never on inputs. */
+  --radius-sketch:22px 26px 20px 28px / 26px 20px 28px 22px;
+  --radius-sketch-sm:12px 14px 10px 15px / 14px 10px 15px 12px;
+}

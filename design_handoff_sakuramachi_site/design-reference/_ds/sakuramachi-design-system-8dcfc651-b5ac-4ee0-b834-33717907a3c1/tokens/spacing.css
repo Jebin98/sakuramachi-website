@@ -1,0 +1,12 @@
+:root{
+  --space-0:0px;--space-px:1px;--space-2:2px;--space-4:4px;--space-6:6px;--space-8:8px;
+  --space-12:12px;--space-16:16px;--space-20:20px;--space-24:24px;--space-32:32px;
+  --space-40:40px;--space-56:56px;--space-72:72px;--space-96:96px;--space-128:128px;
+
+  /* Layout */
+  --gutter:20px;--gutter-lg:32px;
+  --container:1180px;--container-narrow:720px;
+  --container-text:62ch; /* @kind spacing */
+  --section-y:96px;--section-y-sm:56px;
+  --control-h-sm:32px;--control-h-md:42px;--control-h-lg:52px;
+}

@@ -1,0 +1,21 @@
+/* Base palette — every value is sampled from the sakuramachi logo artwork. */
+:root{
+  /* Sakura — the pink halo the mark floats in */
+  --sakura-50:#fffafb;--sakura-100:#fdeef2;--sakura-200:#f9e2ea;--sakura-300:#f5dbe4;
+  --sakura-400:#efc6d5;--sakura-500:#e5a4bb;--sakura-600:#cf7f9b;--sakura-700:#a95d78;
+  /* Cream — whipped cream + inner filling */
+  --cream-50:#fdfcf5;--cream-100:#fbf9ed;--cream-200:#f6f1df;--cream-300:#efe7cd;
+  /* Sponge — the shortcake layers */
+  --sponge-100:#f5ebc6;--sponge-200:#efe0ae;--sponge-300:#e6ce88;--sponge-400:#c7a55e;
+  --sponge-500:#a5854a;--sponge-600:#7c6234;
+  /* Berry — the strawberry */
+  --berry-100:#fbe1e3;--berry-300:#e8737e;--berry-400:#dd4a58;--berry-500:#cd3041;
+  --berry-600:#ac2333;--berry-700:#7f1a26;
+  /* Matcha — the pale green cream on the top face */
+  --matcha-100:#eae8b7;--matcha-300:#c9ce8a;--matcha-500:#8b9455;--matcha-600:#5a6431;--matcha-700:#454d24;
+  /* Ink — the hand-drawn outline, and everything derived from it */
+  --ink-900:#151011;--ink-800:#241c1d;--ink-700:#3a3130;--ink-600:#544a47;
+  --ink-500:#6b5f5c;--ink-400:#8d817d;--ink-300:#a79a96;--ink-200:#cdc3bf;
+  --ink-100:#e6ded9;--ink-50:#f2ece9;
+  --paper:#fffdfa;--white:#ffffff;
+}

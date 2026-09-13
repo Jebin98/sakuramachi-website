@@ -1,0 +1,10 @@
+:root{
+  /* The pink grain halo, lifted straight from the logo artwork. */
+  --grain-url:url("../assets/grain.png"); /* @kind other */
+  --grain-opacity:.6; /* @kind other */
+  --halo-sakura:radial-gradient(60% 55% at 50% 45%, var(--sakura-300) 0%, var(--sakura-200) 42%, var(--sakura-100) 68%, var(--paper) 100%); /* @kind color */
+  --halo-sakura-soft:radial-gradient(70% 60% at 50% 40%, var(--sakura-200) 0%, var(--sakura-100) 55%, var(--paper) 100%); /* @kind color */
+  --wash-cream:linear-gradient(180deg,var(--cream-100) 0%,var(--paper) 100%); /* @kind color */
+  --protect-scrim:linear-gradient(180deg,rgba(21,16,17,0) 0%,rgba(21,16,17,.55) 100%); /* @kind color */
+  --blur-veil:saturate(1.05) blur(14px); /* @kind other */
+}

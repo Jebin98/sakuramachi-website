@@ -1,0 +1,33 @@
+:root{
+  /* Families */
+  --font-display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --font-script:"Nothing You Could Do","Segoe Script",cursive;
+  --font-mono:"DM Mono",ui-monospace,"SFMono-Regular",monospace;
+
+  /* Weights */
+  --fw-light:300; /* @kind font */
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-bold:700; /* @kind font */
+  --fw-black:900; /* @kind font */
+
+  /* Size ramp (1.24-ish) */
+  --text-2xs:11px;--text-xs:12px;--text-sm:13px;--text-base:15px;--text-md:17px;
+  --text-lg:20px;--text-xl:24px;--text-2xl:30px;--text-3xl:38px;--text-4xl:48px;
+  --text-5xl:62px;--text-6xl:80px;
+
+  /* Line heights */
+  --lh-tight:1.04; /* @kind font */
+  --lh-snug:1.2; /* @kind font */
+  --lh-heading:1.28; /* @kind font */
+  --lh-body:1.7; /* @kind font */
+  --lh-loose:1.85; /* @kind font */
+
+  /* Tracking */
+  --ls-display:-0.022em; /* @kind font */
+  --ls-heading:-0.01em; /* @kind font */
+  --ls-body:0em; /* @kind font */
+  --ls-label:0.08em; /* @kind font */
+  --ls-caps:0.16em; /* @kind font */
+}

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/colors.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/typography.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/radii.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/shadows.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/motion.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/styles.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-page);color:var(--text-body);font-family:var(--font-body);font-size:var(--text-base);line-height:var(--leading-normal);-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+h1,h2,h3{margin:0;font-family:var(--font-display);font-weight:var(--weight-regular);color:var(--text-heading)}
+p{margin:0}
+img{display:block}
+[data-rail]{scrollbar-width:none;-ms-overflow-style:none}
+[data-rail]::-webkit-scrollbar{display:none}
+:focus-visible{outline:none;box-shadow:var(--ring-focus)}
+#sm-grid [data-cat]{display:grid}
+#sm-grid [data-cat]>*{width:100%;min-width:0}
+#sm-grid article>div+div{min-height:116px}
+</style>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+<script src="_ds/sakuramachi-design-system-09892467-6342-44d5-b621-4aaa8eb2c204/_ds_bundle.js"></script>
+</helmet>
+
+<div id="sm-page" style="position:relative;overflow-x:hidden">
+
+<header id="sm-header" style="position:sticky;top:0;z-index:50;background:rgba(255,253,248,0);border-bottom:1px solid rgba(0,0,0,0);backdrop-filter:blur(0px);transition:background-color var(--dur-base) var(--ease-drift),border-color var(--dur-base) var(--ease-drift)">
+  <div style="max-width:var(--page-max);margin:0 auto;padding:12px var(--page-gutter);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:var(--space-5);row-gap:var(--space-2)">
+    <a href="#sm-page" aria-label="sakuramachi, home" onClick="{{ goTop }}" style="display:flex;align-items:center;gap:6px;flex:0 0 auto;padding-top:6px">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Logo" variant="mark" src="media/logo-sakuramachi.jpg" size="{{ markSize }}" hint-size="80px,60px"></x-import>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Logo" variant="wordmark" size="{{ wordSize }}" hint-size="130px,34px"></x-import>
+    </a>
+    <nav style="display:flex;flex-wrap:wrap;align-items:center;column-gap:var(--space-1);row-gap:var(--space-1);min-width:0">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="ghost" size="sm" on-click="{{ goBakes }}" dc-props="{{ navGhost }}" hint-size="auto,36px">The bake list</x-import>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="ghost" size="sm" on-click="{{ goAbout }}" dc-props="{{ navGhost }}" hint-size="auto,36px">The baker</x-import>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="primary" size="sm" on-click="{{ goDM }}" dc-props="{{ navOrder }}" hint-size="auto,36px">Order</x-import>
+    </nav>
+  </div>
+</header>
+
+<section style="position:relative;background:var(--wash-sakura);padding:var(--space-16) 0 var(--space-20);overflow:hidden">
+  <div style="position:relative;max-width:var(--page-max);margin:0 auto;padding:0 var(--page-gutter);display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
+
+    <div data-hero-eyebrow style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
+      <span style="font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--kinako-700)">sah-koo-rah-mah-chi</span>
+      <span style="font-size:var(--text-xs);color:var(--kinako-700)">さくらまち</span>
+    </div>
+
+    <h1 style="font-size:clamp(40px,6.2vw,72px);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);text-wrap:pretty;max-width:16ch">
+      <span data-hero-word style="display:inline-block">A</span> <span data-hero-word style="display:inline-block">slice</span> <span data-hero-word style="display:inline-block">of</span> <span data-hero-word style="display:inline-block">hanami.</span>
+    </h1>
+
+    <p data-hero-lead style="max-width:46ch;font-size:var(--text-lg);line-height:var(--leading-normal);color:var(--text-body)">Japanese- and Korean-inspired pastry, self-taught and baked at home. The town of cherry blossom, by way of Chennai.</p>
+
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-3)">
+      <span data-hero-cta data-magnetic style="display:inline-flex;will-change:transform">
+        <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="primary" size="lg" on-click="{{ goDM }}" dc-props="{{ optLg }}" hint-size="auto,56px">Order on Instagram</x-import>
+      </span>
+      <span data-hero-cta style="display:inline-flex">
+        <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="outline" size="lg" on-click="{{ goBakes }}" dc-props="{{ optLg }}" hint-size="auto,56px">See everything we bake</x-import>
+      </span>
+    </div>
+
+    <div data-hero-card style="width:100%;max-width:330px;margin-top:var(--space-4);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--surface-card)">
+      <div data-hero-frame style="position:relative;overflow:hidden;aspect-ratio:9 / 13.6;background:var(--cocoa-900)">
+        <div data-hero-media style="position:absolute;inset:0;will-change:transform">
+          <div data-hero-slide="0" style="position:absolute;inset:0;opacity:1;transition:opacity 620ms var(--ease-drift)">
+            <video data-hero-video src="{{ heroSrcA }}" poster="{{ heroPosterA }}" autoplay="{{ yes }}" muted="{{ yes }}" plays-inline="{{ yes }}" preload="auto" aria-label="{{ heroLabelA }}" style="position:absolute;top:-6%;left:0;width:100%;height:112%;object-fit:cover;object-position:50% 0%;will-change:transform"></video>
+          </div>
+          <div data-hero-slide="1" style="position:absolute;inset:0;opacity:0;transition:opacity 620ms var(--ease-drift)">
+            <video data-hero-video src="{{ heroSrcB }}" poster="{{ heroPosterB }}" muted="{{ yes }}" plays-inline="{{ yes }}" preload="auto" aria-label="{{ heroLabelB }}" style="position:absolute;top:-6%;left:0;width:100%;height:112%;object-fit:cover;object-position:50% 0%;will-change:transform"></video>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" style="display:flex;justify-content:center;gap:10px;padding:14px 0 0">
+        <span data-hero-dot="0" style="display:block;width:56px;height:5px;border-radius:var(--radius-pill);background:var(--sakura-200);overflow:hidden">
+          <span data-hero-fill style="display:block;height:100%;width:0%;background:var(--sakura-500);border-radius:var(--radius-pill)"></span>
+        </span>
+        <span data-hero-dot="1" style="display:block;width:56px;height:5px;border-radius:var(--radius-pill);background:var(--sakura-200);overflow:hidden">
+          <span data-hero-fill style="display:block;height:100%;width:0%;background:var(--sakura-500);border-radius:var(--radius-pill)"></span>
+        </span>
+      </div>
+      <div style="padding:var(--space-4) var(--space-5) var(--space-5);display:flex;flex-direction:column;align-items:center;gap:var(--space-3)">
+        <span style="font-family:var(--font-script);font-size:var(--text-xl);color:var(--sakura-700);line-height:1.2;transform:translate(-0.115em,-0.095em)">broken open, still warm</span>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2)">
+          <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Badge" tone="sakura" size="sm" hint-size="auto,22px">made the morning of</x-import>
+          <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Badge" tone="neutral" size="sm" hint-size="auto,22px">small batch</x-import>
+        </div>
+      </div>
+    </div>
+
+    <span style="font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--kinako-700);padding-top:var(--space-2)">chennai · weekends · delivery</span>
+
+  </div>
+</section>
+
+<div data-ticker style="border-top:var(--border-hairline);border-bottom:var(--border-hairline);background:var(--surface-sunken);overflow:hidden;padding:var(--space-4) 0">
+  <div data-ticker-track style="display:flex;column-gap:11px;width:max-content;will-change:transform">
+    <span style="font-family:var(--font-display);font-size:var(--text-xl);letter-spacing:var(--tracking-display);color:var(--text-heading);white-space:nowrap">Strawberry shortcake · Matcha layer cake · Fudgy brownies · Nutella cookies · Madeleines · Tres leches · Carrot cake · Biscoff cookies · NY-style cheesecake · Banana bread · Dubai chocolate bar · Matilda chocolate cake ·</span>
+    <span aria-hidden="true" style="font-family:var(--font-display);font-size:var(--text-xl);letter-spacing:var(--tracking-display);color:var(--text-heading);white-space:nowrap">Strawberry shortcake · Matcha layer cake · Fudgy brownies · Nutella cookies · Madeleines · Tres leches · Carrot cake · Biscoff cookies · NY-style cheesecake · Banana bread · Dubai chocolate bar · Matilda chocolate cake ·</span>
+  </div>
+</div>
+
+<section id="bakes" style="max-width:var(--page-max);margin:0 auto;padding:var(--space-24) var(--page-gutter) 0;scroll-margin-top:80px">
+  <div data-reveal style="margin-bottom:var(--space-8)">
+    <x-import component-from-global-scope="SakuramachiDesignSystem_098924.SectionHeading" eyebrow="The bake list" title="Everything we bake." lede="Whole cakes, cupcakes, cookies and small bakes. Ask for anything that is not on the list." hint-size="100%,150px"></x-import>
+  </div>
+
+  <div data-reveal style="margin-bottom:var(--space-6);display:flex">
+    <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Tabs" variant="pill" tabs="{{ filterTabs }}" default-value="all" on-change="{{ onFilter }}" aria-label="Filter the bake list" hint-size="auto,48px"></x-import>
+  </div>
+
+  <div id="sm-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-5)">
+
+    <div data-cat="cookies" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Fudgy brownies" blurb="ファッジブラウニー" flavour="cocoa" image="media/tiles/brownies.jpg" image-alt="Six fudgy brownies boxed in a white window box" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cookies" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Nutella cookies" blurb="ヌテラクッキー" flavour="cocoa" image="media/still-cookie-pull.jpg" image-alt="A Nutella-stuffed cookie pulled apart, centre still molten" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Strawberry shortcake" blurb="ストロベリーショートケーキ" flavour="ichigo" image="media/tiles/shortcake.jpg" image-alt="Strawberry shortcake, sponge layers with cream and strawberries" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Matcha layer cake" blurb="マッチャレイヤーケーキ" flavour="matcha" image="media/tiles/matcha-cake.jpg" image-alt="Matcha layer cake, cut to show the green sponge and filling" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Carrot cake" blurb="キャロットケーキ" image="media/tiles/carrot-cake.jpg" image-alt="Carrot cake, layered and topped with cream and fruit" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cakes" data-keep-ja="true" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Matilda chocolate cake" blurb="マチルダチョコレートケーキ" flavour="cocoa" image="media/tiles/matilda.jpg" image-alt="Matilda chocolate cake, three tall dark layers" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="NY-style cheesecake" blurb="ニューヨークチーズケーキ" image="media/tiles/cheesecake.jpg" image-alt="A slice of New York style cheesecake on a plate" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Tres leches" blurb="トレスレチェス" image="media/tiles/tres-leches.jpg" image-alt="Tres leches in trays, topped with cream and a strawberry" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cupcakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Chocolate buttercream cupcakes" blurb="チョコレートバタークリームカップケーキ" flavour="cocoa" image="media/tiles/cupcakes-choc.jpg" image-alt="Chocolate buttercream cupcakes with piped swirls" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cupcakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Carrot cake cupcakes" blurb="キャロットケーキカップケーキ" image="media/tiles/cupcakes-carrot.jpg" image-alt="A boxed half dozen of carrot cake cupcakes" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cupcakes" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Whipped ganache cupcakes" blurb="チョコレートガナッシュカップケーキ" flavour="cocoa" image="media/tiles/cupcakes-ganache.jpg" image-alt="A boxed half dozen of whipped ganache cupcakes" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cookies" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Biscoff cookies" blurb="ビスコフクッキー" image="media/tiles/biscoff.jpg" image-alt="Biscoff cookies, each topped with a biscuit" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cookies" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Cookies" blurb="クッキー" image="media/tiles/cookies.jpg" image-alt="An assortment of cookies on a patterned plate" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="cookies" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Dubai chocolate bar" blurb="ドバイチョコレートバー" flavour="cocoa" image="media/tiles/dubai-bar.jpg" image-alt="A Dubai chocolate bar, scored into squares" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="small" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Madeleines" blurb="マドレーヌ" flavour="butter" image="media/tiles/madeleines.jpg" image-alt="Madeleines on a plate, shell side up" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="small" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Chocolate-covered madeleines" blurb="チョコレートマドレーヌ" flavour="cocoa" image="media/tiles/madeleines-choc.jpg" image-alt="Two chocolate covered madeleines held in one hand" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div data-cat="small" data-reveal>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.ProductCard" name="Banana bread" blurb="バナナブレッド" image="media/tiles/banana-bread.jpg" image-alt="Banana bread, cut into thick pieces" on-click="{{ goDM }}" hint-size="100%,380px"></x-import>
+    </div>
+
+  </div>
+
+</section>
+
+<section data-about id="about" style="max-width:var(--page-max);margin:var(--space-24) auto 0;padding:0 var(--page-gutter);scroll-margin-top:80px">
+  <div style="position:relative;overflow:hidden;background:var(--surface-inverse);border-radius:var(--radius-2xl);padding:clamp(32px,5vw,72px);color:var(--text-inverse)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,4vw,56px);align-items:center">
+
+      <div style="min-width:0;display:flex;flex-direction:column;gap:var(--space-5)">
+        <span data-reveal style="font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--sakura-300)">The baker</span>
+        <h2 data-reveal style="color:var(--cream-50);font-size:clamp(28px,3.4vw,44px);line-height:var(--leading-tight);letter-spacing:var(--tracking-display)">Self-taught, and particular about it.</h2>
+        <p data-reveal style="max-width:52ch;color:var(--text-inverse-muted);font-size:var(--text-base);line-height:var(--leading-normal)">Japanese and Korean pâtisserie teach restraint: few ingredients, exact ratios, nothing hidden under decoration. Everything here is made at home, by hand, and learned the slow way - by baking it again until it was right.</p>
+        <p data-reveal style="max-width:52ch;color:var(--text-inverse-muted);font-size:var(--text-base);line-height:var(--leading-normal)">Sakuramachi means the town of cherry blossom. A slice should feel the way hanami (flower viewing) does - calm, a little fleeting, worth stopping for.</p>
+        <div data-quote style="padding-top:var(--space-2)">
+          <x-import component-from-global-scope="SakuramachiDesignSystem_098924.HandwrittenNote" tone="plain" size="{{ noteSize }}" lines="{{ noteLines }}" dc-props="{{ noteInk }}" hint-size="100%,40px"></x-import>
+        </div>
+      </div>
+
+      <div data-reveal style="min-width:0;display:flex;justify-content:center">
+        <div style="width:100%;max-width:340px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+          <div data-about-photo style="will-change:transform">
+            <img src="media/tiles/baker.jpg" alt="A hand steadying a cut chocolate layer cake on its stand" style="width:100%;aspect-ratio:4 / 5;object-fit:cover">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="feed" style="margin:var(--space-24) 0 0;scroll-margin-top:80px">
+  <div style="max-width:var(--page-max);margin:0 auto var(--space-6);padding:0 var(--page-gutter);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-5)">
+    <div data-reveal style="min-width:0">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.SectionHeading" eyebrow="The feed" title="@sakuramachipastries" lede="What came out of the oven this week." hint-size="100%,150px"></x-import>
+    </div>
+    <div data-reveal style="display:flex;gap:var(--space-2)">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.IconButton" tone="surface" icon="arrow-left" size="md" label="Scroll the feed left" on-click="{{ railPrev }}" hint-size="44px,44px"></x-import>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.IconButton" tone="surface" icon="arrow-right" size="md" label="Scroll the feed right" on-click="{{ railNext }}" hint-size="44px,44px"></x-import>
+    </div>
+  </div>
+
+  <div data-rail style="display:flex;gap:var(--space-5);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:24px;padding:8px var(--page-gutter) var(--space-6);cursor:grab">
+    <div data-rail-card style="flex:0 0 auto;width:min(280px,72vw);scroll-snap-align:start">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Card" padded="{{ no }}" interactive="{{ yes }}" on-click="{{ goFeed }}" hint-size="100%,280px">
+        <img src="media/tiles/feed-cream-cake.jpg" alt="A cream cheese frosted cake on a stand, cake server beside it" style="width:100%;aspect-ratio:1 / 1;object-fit:cover">
+      </x-import>
+    </div>
+    <div data-rail-card style="flex:0 0 auto;width:min(280px,72vw);scroll-snap-align:start">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Card" padded="{{ no }}" interactive="{{ yes }}" on-click="{{ goFeed }}" hint-size="100%,280px">
+        <img src="media/still-cookie-halves.jpg" alt="A Nutella cookie split into two halves" style="width:100%;aspect-ratio:1 / 1;object-fit:cover">
+      </x-import>
+    </div>
+    <div data-rail-card style="flex:0 0 auto;width:min(280px,72vw);scroll-snap-align:start">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Card" padded="{{ no }}" interactive="{{ yes }}" on-click="{{ goFeed }}" hint-size="100%,280px">
+        <img src="media/tiles/feed-box.jpg" alt="A pink sakuramachi bakery box, labelled by hand" style="width:100%;aspect-ratio:1 / 1;object-fit:cover">
+      </x-import>
+    </div>
+    <div data-rail-card style="flex:0 0 auto;width:min(280px,72vw);scroll-snap-align:start">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Card" padded="{{ no }}" interactive="{{ yes }}" on-click="{{ goFeed }}" hint-size="100%,280px">
+        <img src="media/tiles/feed-cake.jpg" alt="A whole frosted cake, boxed and ready to go" style="width:100%;aspect-ratio:1 / 1;object-fit:cover">
+      </x-import>
+    </div>
+    <div data-rail-card style="flex:0 0 auto;width:min(280px,72vw);scroll-snap-align:start">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Card" padded="{{ no }}" interactive="{{ yes }}" on-click="{{ goFeed }}" hint-size="100%,280px">
+        <img src="media/tiles/feed-matcha.jpg" alt="A slice of matcha layer cake on a patterned plate" style="width:100%;aspect-ratio:1 / 1;object-fit:cover">
+      </x-import>
+    </div>
+    <div data-rail-card style="flex:0 0 auto;width:min(280px,72vw);scroll-snap-align:start">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Card" tone="accent" dc-props="{{ squareCard }}" hint-size="100%,280px">
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:var(--space-4);height:100%;padding:var(--space-3)">
+          <span style="font-family:var(--font-script);font-size:var(--text-2xl);color:var(--sakura-700);line-height:1.2;transform:translate(-0.115em,-0.095em)">more on the feed</span>
+          <p style="font-size:var(--text-sm);color:var(--text-body)">Everything gets posted the day it is baked.</p>
+          <div style="display:flex">
+            <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="secondary" size="md" on-click="{{ goFeed }}" dc-props="{{ optMd }}" hint-size="auto,46px">Follow on Instagram</x-import>
+          </div>
+        </div>
+      </x-import>
+    </div>
+  </div>
+</section>
+
+<section id="order" style="position:relative;margin-top:var(--space-24);padding:var(--space-24) 0;background:var(--surface-sunken);border-top:var(--border-hairline);border-bottom:var(--border-hairline);scroll-margin-top:80px">
+  <div style="position:relative;max-width:var(--page-max);margin:0 auto;padding:0 var(--page-gutter);display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
+    <span data-reveal style="font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--kinako-700)">chennai · weekends · delivery</span>
+    <h2 data-reveal style="font-size:clamp(34px,5vw,56px);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);max-width:16ch">Let's get you a slice.</h2>
+    <p data-reveal style="max-width:48ch;font-size:var(--text-lg);color:var(--text-body)">Send us a message with what you want and when you want it. Delivered anywhere in Chennai, on weekends.</p>
+    <div data-reveal style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-3);padding-top:var(--space-2)">
+      <span data-magnetic style="display:inline-flex;will-change:transform">
+        <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="primary" size="lg" on-click="{{ goDM }}" dc-props="{{ optLg }}" hint-size="auto,56px">Message us on Instagram</x-import>
+      </span>
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Button" tone="outline" size="lg" on-click="{{ goFeed }}" dc-props="{{ optLg }}" hint-size="auto,56px">See the feed first</x-import>
+    </div>
+    <span data-reveal style="font-family:var(--font-script);font-size:var(--text-2xl);color:var(--sakura-600);line-height:1.2;transform:translate(-0.115em,-0.095em);padding-top:var(--space-1)">thank you, come again</span>
+  </div>
+</section>
+
+<footer style="background:var(--surface-inverse);color:var(--text-inverse);padding:var(--space-16) 0 var(--space-10)">
+  <div style="max-width:var(--page-max);margin:0 auto;padding:0 var(--page-gutter);display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--space-8)">
+    <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+      <x-import component-from-global-scope="SakuramachiDesignSystem_098924.Logo" variant="wordmark" size="{{ footerSize }}" color="var(--cream-50)" hint-size="150px,36px"></x-import>
+      <span style="font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-inverse-muted)">さくらまち · the town of cherry blossom</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+      <a href="#bakes" onClick="{{ goBakes }}" style="color:var(--cream-50);font-size:var(--text-sm)">The bake list</a>
+      <a href="#about" onClick="{{ goAbout }}" style="color:var(--cream-50);font-size:var(--text-sm)">The baker</a>
+      <a href="https://www.instagram.com/sakuramachipastries" target="_blank" rel="noopener" style="color:var(--cream-50);font-size:var(--text-sm)">Instagram</a>
+      <a href="https://ig.me/m/sakuramachipastries" target="_blank" rel="noopener" style="color:var(--sakura-300);font-size:var(--text-sm)">Order by DM</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:var(--space-2);max-width:34ch">
+      <span style="font-family:var(--font-script);font-size:var(--text-2xl);color:var(--sakura-200);line-height:1.2;transform:translate(-0.115em,-0.095em)">baked at home, delivered by hand</span>
+      <span style="font-size:var(--text-xs);color:var(--text-inverse-muted)">Chennai, India · weekend delivery</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;buttonTone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sakura&quot;,&quot;hojicha&quot;],&quot;default&quot;:&quot;sakura&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;motionLevel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;,&quot;off&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;brownie&quot;,&quot;cookie&quot;],&quot;default&quot;:&quot;brownie&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showJapaneseNames&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      yes: true,
+      no: false,
+      wordSize: 100,
+      footerSize: 110,
+      noteSize: 30,
+      noteLines: ["share the love, or a slice of cake"],
+      noteInk: { style: { color: "var(--sakura-200)" } },
+      markSize: 72,
+      squareCard: { style: { aspectRatio: "1 / 1" } },
+      optLg: { style: { paddingBottom: "3px" } },
+      optMd: { style: { paddingBottom: "2px" } },
+      navGhost: { style: { padding: "0 12px", paddingBottom: "2px" } },
+      navOrder: { style: { marginLeft: "8px", paddingBottom: "2px" } },
+      filterTabs: [
+        { value: "all", label: "Everything" },
+        { value: "cakes", label: "Cakes" },
+        { value: "cupcakes", label: "Cupcakes" },
+        { value: "cookies", label: "Cookies & bars" },
+        { value: "small", label: "Small bakes" }
+      ],
+      heroSrcA: this.clips()[0].src,
+      heroPosterA: this.clips()[0].poster,
+      heroLabelA: this.clips()[0].label,
+      heroSrcB: this.clips()[1].src,
+      heroPosterB: this.clips()[1].poster,
+      heroLabelB: this.clips()[1].label,
+      goTop: (e) => { if (e && e.preventDefault) e.preventDefault(); window.scrollTo({ top: 0, behavior: this.reduced ? "auto" : "smooth" }); },
+      goBakes: this.jump("bakes"),
+      goAbout: this.jump("about"),
+      goDM: this.open("https://ig.me/m/sakuramachipastries"),
+      goFeed: this.open("https://www.instagram.com/sakuramachipastries"),
+      onFilter: (v) => this.applyFilter(v),
+      railPrev: () => this.nudgeRail(-1),
+      railNext: () => this.nudgeRail(1)
+    };
+  }
+
+  root() { return document.getElementById("sm-page"); }
+
+  jump(id) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 78;
+      window.scrollTo({ top: y, behavior: this.reduced ? "auto" : "smooth" });
+    };
+  }
+
+  open(url) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      window.open(url, "_blank", "noopener");
+    };
+  }
+
+  nudgeRail(dir) {
+    const rail = this.root() && this.root().querySelector("[data-rail]");
+    if (!rail) return;
+    const max = rail.scrollWidth - rail.clientWidth;
+    const target = Math.max(0, Math.min(max, rail.scrollLeft + dir * rail.clientWidth * 0.7));
+    const g = window.gsap;
+    if (!g || this.reduced) { rail.scrollLeft = target; return; }
+    g.killTweensOf(rail);
+    rail.style.scrollSnapType = "none";
+    const settle = () => {
+      if (Math.abs(rail.scrollLeft - target) > 2) rail.scrollLeft = target;
+      rail.style.scrollSnapType = "x mandatory";
+    };
+    clearTimeout(this._railT);
+    this._railT = setTimeout(settle, 620);
+    g.to(rail, { scrollLeft: target, duration: 0.45, ease: "power2.out", onComplete: settle });
+  }
+
+  applyFilter(key) {
+    const g = window.gsap, Flip = window.Flip;
+    const grid = document.getElementById("sm-grid");
+    if (!grid) return;
+    this._filter = key;
+    const tiles = Array.prototype.slice.call(grid.querySelectorAll("[data-cat]"));
+    const show = (el) => key === "all" || el.getAttribute("data-cat") === key;
+    if (!g || !Flip || this.reduced) {
+      tiles.forEach((el) => { el.style.display = show(el) ? "grid" : "none"; });
+      return;
+    }
+    const state = Flip.getState(tiles);
+    tiles.forEach((el) => { el.style.display = show(el) ? "grid" : "none"; });
+    Flip.from(state, {
+      duration: 0.45,
+      ease: "power2.out",
+      stagger: 0.02,
+      onEnter: (els) => g.fromTo(els, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }),
+      onLeave: (els) => g.to(els, { opacity: 0, duration: 0.16, ease: "power1.out" }),
+      onComplete: () => { if (window.ScrollTrigger) window.ScrollTrigger.refresh(); }
+    });
+  }
+
+  componentDidMount() {
+    this._dead = false;
+    this._cleanups = [];
+    this.tone();
+    this.syncJapanese();
+    const relayout = () => this.syncJapanese();
+    window.addEventListener("resize", relayout);
+    this._cleanups.push(() => window.removeEventListener("resize", relayout));
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+    setTimeout(relayout, 400);
+    this.header();
+    if (this.root()) this.rail(this.root());
+    this.kickVideo(0);
+    this.waitForGsap(0);
+  }
+
+  componentDidUpdate() { this.tone(); this.syncJapanese(); }
+
+  /* Only two of the founder's clips are small enough to ship on the web; the hero cycles them. */
+  clips() {
+    const all = {
+      brownie: { src: "media/brownie-break.webm", poster: "media/poster-brownie.jpg", label: "A fudgy brownie broken open by hand" },
+      cookie: { src: "media/cookie-break.webm", poster: "media/poster-cookie.jpg", label: "A Nutella cookie pulled apart, centre still molten" }
+    };
+    const pick = this.props.heroVideo ?? "brownie";
+    return pick === "cookie" ? [all.cookie, all.brownie] : [all.brownie, all.cookie];
+  }
+
+  /* Hero carousel: crossfade + Ken Burns + Stories-style segmented progress, paused on hover. */
+  kickVideo(tries) {
+    if (this._dead) return;
+    const root = this.root();
+    const slides = root ? Array.prototype.slice.call(root.querySelectorAll("[data-hero-slide]")) : [];
+    if (slides.length < 2) { if (tries < 40) setTimeout(() => this.kickVideo(tries + 1), 100); return; }
+
+    const vids = slides.map((s) => s.querySelector("video"));
+    const fills = Array.prototype.slice.call(root.querySelectorAll("[data-hero-fill]"));
+    const dots = Array.prototype.slice.call(root.querySelectorAll("[data-hero-dot]"));
+    const frame = root.querySelector("[data-hero-frame]");
+    vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = false; });
+
+    this._hero = { slides, vids, fills, dots, i: 0, paused: false, frame };
+    vids.forEach((v, n) => {
+      v.addEventListener("ended", () => { if (this._hero.i === n) this.heroGo((n + 1) % vids.length); });
+      v.addEventListener("loadeddata", () => { if (this._hero.i === n) this.heroPlay(); }, { once: true });
+    });
+
+    this.heroGo(0, false, true);
+    const tick = () => {
+      if (this._dead) return;
+      const h = this._hero;
+      /* Both clips run to the shorter one's length — the longer is cut off at the end. */
+      const limit = this.heroLimit();
+      h.fills.forEach((f, n) => {
+        const v = h.vids[n];
+        const p = n < h.i ? 1 : n > h.i ? 0 : (limit ? Math.min(1, (v.currentTime || 0) / limit) : 0);
+        f.style.width = (p * 100).toFixed(1) + "%";
+      });
+      const cur = h.vids[h.i];
+      if (limit && cur && cur.currentTime >= limit - 0.05) this.heroGo((h.i + 1) % h.vids.length);
+      this._raf = requestAnimationFrame(tick);
+    };
+    this._raf = requestAnimationFrame(tick);
+    this._cleanups.push(() => cancelAnimationFrame(this._raf));
+  }
+
+  heroLimit() {
+    const h = this._hero;
+    if (!h) return 0;
+    const ds = h.vids.map((v) => (v && isFinite(v.duration) ? v.duration : 0)).filter(Boolean);
+    return ds.length === h.vids.length ? Math.min.apply(null, ds) : 0;
+  }
+
+  heroPlay() {
+    const h = this._hero;
+    if (!h || h.paused) return;
+    const v = h.vids[h.i];
+    const p = v && v.play();
+    if (p && p.catch) p.catch(() => {});
+    if (this._kb) this._kb.play();
+  }
+
+  heroPause() {
+    const h = this._hero;
+    if (!h) return;
+    const v = h.vids[h.i];
+    if (v) v.pause();
+    if (this._kb) this._kb.pause();
+  }
+
+  heroGo(n, manual, first) {
+    const h = this._hero;
+    if (!h || (!first && n === h.i)) return;
+    const prev = h.vids[h.i];
+    if (prev && !first) { prev.pause(); prev.currentTime = 0; }
+    h.i = n;
+    h.slides.forEach((s, k) => { s.style.opacity = k === n ? "1" : "0"; });
+    h.fills.forEach((f, k) => { if (k !== n) f.style.width = k < n && !manual ? "100%" : "0%"; });
+    const v = h.vids[n];
+    if (v) { v.currentTime = 0; }
+    this.kenBurns(v);
+    if (manual) h.paused = false;
+    this.heroPlay();
+  }
+
+  kenBurns(v) {
+    const g = window.gsap;
+    if (!v) return;
+    if (this._kb) { this._kb.kill(); this._kb = null; }
+    const others = this._hero ? this._hero.vids.filter((x) => x !== v) : [];
+    if (!g || this.reduced || (this.props.motionLevel ?? "full") !== "full") {
+      if (g) g.set([v].concat(others), { scale: 1 });
+      return;
+    }
+    g.set(others, { scale: 1 });
+    this._kb = g.fromTo(v, { scale: 1 }, { scale: 1.09, duration: this.heroLimit() || v.duration || 6, ease: "none" });
+  }
+
+  syncJapanese() {
+    const on = this.props.showJapaneseNames ?? true;
+    const grid = document.getElementById("sm-grid");
+    if (!grid) return;
+    grid.querySelectorAll("h3").forEach((h) => {
+      const ja = h.parentElement && h.parentElement.querySelector("p");
+      if (!ja) return;
+      const cs = getComputedStyle(h);
+      const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.2;
+      const keep = !!h.closest("[data-keep-ja]");
+      const wrapped = h.getBoundingClientRect().height > lh * 1.6;
+      const shown = on && (keep || !wrapped);
+      ja.style.display = shown ? "block" : "none";
+      /* Cards whose name wraps lose their katakana line — they sink to the end of the grid. */
+      const tile = h.closest("[data-cat]");
+      if (tile) tile.style.order = shown ? "0" : "1";
+    });
+  }
+
+  tone() {
+    const root = this.root();
+    if (!root) return;
+    const brown = (this.props.buttonTone ?? "sakura") === "hojicha";
+    if (brown) {
+      root.style.setProperty("--action-primary-bg", "var(--hojicha-700)");
+      root.style.setProperty("--action-primary-bg-hover", "var(--hojicha-500)");
+      root.style.setProperty("--action-primary-bg-active", "var(--hojicha-700)");
+      root.style.setProperty("--action-primary-fg", "var(--cream-50)");
+    } else {
+      ["--action-primary-bg", "--action-primary-bg-hover", "--action-primary-bg-active", "--action-primary-fg"].forEach((p) => root.style.removeProperty(p));
+    }
+  }
+
+  waitForGsap(tries) {
+    if (this._dead) return;
+    if (window.gsap && window.ScrollTrigger) { this.init(); return; }
+    if (tries > 80) return;
+    setTimeout(() => this.waitForGsap(tries + 1), 100);
+  }
+
+  init() {
+    const g = window.gsap;
+    const ST = window.ScrollTrigger;
+    g.registerPlugin(ST);
+    if (window.Flip) g.registerPlugin(window.Flip);
+    const root = this.root();
+    if (!root) return;
+
+    const level = this.props.motionLevel ?? "full";
+    this.ctx = g.context(() => { this.setup(g, ST, root, level); }, root);
+
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ST.refresh());
+    const v0 = root.querySelector("[data-hero-video]");
+    if (v0) v0.addEventListener("loadeddata", () => ST.refresh(), { once: true });
+  }
+
+  setup(g, ST, root, level) {
+    this.mm = g.matchMedia();
+    this.mm.add(
+      { reduce: "(prefers-reduced-motion: reduce)", fine: "(prefers-reduced-motion: no-preference)" },
+      (ctx) => {
+        const reduce = ctx.conditions.reduce || level === "off";
+        this.reduced = reduce;
+        if (reduce) return;
+        const rich = level === "full";
+
+        this.reveal(g, root);
+
+        const heroSel = "[data-hero-eyebrow],[data-hero-word],[data-hero-lead],[data-hero-cta],[data-hero-card]";
+        const tl = g.timeline({ defaults: { ease: "power2.out" } });
+        tl.from("[data-hero-eyebrow]", { y: 8, autoAlpha: 0, duration: 0.42 })
+          .from("[data-hero-word]", { y: 8, autoAlpha: 0, duration: 0.5, stagger: 0.06 }, "-=0.2")
+          .from("[data-hero-lead]", { y: 8, autoAlpha: 0, duration: 0.42 }, "-=0.3")
+          .from("[data-hero-cta]", { y: 8, autoAlpha: 0, duration: 0.42, stagger: 0.08 }, "-=0.28")
+          .from("[data-hero-card]", { y: 8, autoAlpha: 0, duration: 0.9, ease: "power1.out" }, 0.2);
+        /* If the host's ticker never advances, a parked .from() would leave the hero at opacity 0. */
+        clearTimeout(this._heroSafety);
+        this._heroSafety = setTimeout(() => {
+          if (tl.totalTime() > 0) return;
+          tl.kill();
+          g.set(heroSel, { y: 0, autoAlpha: 1, clearProps: "transform,opacity,visibility" });
+        }, 1400);
+
+        const track = root.querySelector("[data-ticker-track]");
+        if (track) {
+          const loop = g.to(track, { xPercent: -50, duration: 48, ease: "none", repeat: -1 });
+          const strip = root.querySelector("[data-ticker]");
+          const over = () => g.to(loop, { timeScale: 0.25, duration: 0.3, overwrite: true });
+          const out = () => g.to(loop, { timeScale: 1, duration: 0.4, overwrite: true });
+          strip.addEventListener("mouseenter", over);
+          strip.addEventListener("mouseleave", out);
+          this._cleanups.push(() => { strip.removeEventListener("mouseenter", over); strip.removeEventListener("mouseleave", out); });
+          if (rich) {
+            ST.create({
+              start: 0,
+              end: "max",
+              onUpdate: (self) => {
+                const boost = g.utils.clamp(0, 2.2, Math.abs(self.getVelocity()) / 900);
+                g.to(loop, { timeScale: 1 + boost, duration: 0.5, overwrite: true });
+              }
+            });
+          }
+        }
+
+        if (rich) {
+          g.fromTo("[data-hero-media]", { yPercent: -4 }, {
+            yPercent: 4, ease: "none",
+            scrollTrigger: { trigger: "[data-hero-card]", start: "top bottom", end: "bottom top", scrub: 0.6 }
+          });
+          g.fromTo("[data-about-photo]", { scale: 1.06 }, {
+            scale: 1, ease: "none",
+            scrollTrigger: { trigger: "[data-about]", start: "top bottom", end: "bottom top", scrub: true }
+          });
+          this.magnet(g, root);
+        }
+      },
+      root
+    );
+  }
+
+  /* Reveals run on an IntersectionObserver, not ScrollTrigger: page content must never
+     depend on a scroll plugin surviving a remount. */
+  reveal(g, root) {
+    const els = Array.prototype.slice.call(root.querySelectorAll("[data-reveal]"));
+    if (!els.length) return;
+    if (this._io) this._io.disconnect();
+    g.set(els, { y: 8, autoAlpha: 0 });
+    const show = (el, i) => g.to(el, { y: 0, autoAlpha: 1, duration: 0.42, delay: Math.min(i, 4) * 0.06, ease: "power2.out", overwrite: true });
+    if (!("IntersectionObserver" in window)) { els.forEach((el, i) => show(el, i)); return; }
+    const io = new IntersectionObserver((entries) => {
+      this._ioAlive = true;
+      entries.filter((e) => e.isIntersecting).forEach((e, i) => { show(e.target, i); io.unobserve(e.target); });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach((el) => io.observe(el));
+    this._io = io;
+    /* If the host never delivers observer callbacks, nothing may stay hidden. */
+    clearTimeout(this._safety);
+    this._safety = setTimeout(() => {
+      if (this._ioAlive) return;
+      io.disconnect();
+      g.set(els, { y: 0, autoAlpha: 1 });
+    }, 1600);
+    this._cleanups.push(() => io.disconnect());
+  }
+
+  header() {
+    const el = document.getElementById("sm-header");
+    if (!el) return;
+    let on = null;
+    const apply = () => {
+      const next = window.pageYOffset > 40;
+      if (next === on) return;
+      on = next;
+      el.style.backgroundColor = next ? "rgba(255,253,248,.88)" : "rgba(255,253,248,0)";
+      el.style.borderBottomColor = next ? "var(--kinako-200)" : "rgba(0,0,0,0)";
+      el.style.backdropFilter = next ? "blur(12px)" : "blur(0px)";
+    };
+    apply();
+    window.addEventListener("scroll", apply, { passive: true });
+    this._cleanups.push(() => window.removeEventListener("scroll", apply));
+  }
+
+  heroTilt(g, root) {
+    const card = root.querySelector("[data-hero-card]");
+    if (!card || window.matchMedia("(hover: none)").matches) return;
+    g.set(card, { transformPerspective: 1000, transformOrigin: "50% 50%" });
+    const rx = g.quickTo(card, "rotationX", { duration: 0.6, ease: "power3" });
+    const ry = g.quickTo(card, "rotationY", { duration: 0.6, ease: "power3" });
+    const move = (e) => {
+      const r = card.getBoundingClientRect();
+      rx(-(((e.clientY - r.top) / r.height) - 0.5) * 6);
+      ry((((e.clientX - r.left) / r.width) - 0.5) * 8);
+    };
+    const leave = () => { rx(0); ry(0); };
+    card.addEventListener("mousemove", move);
+    card.addEventListener("mouseleave", leave);
+    this._cleanups.push(() => { card.removeEventListener("mousemove", move); card.removeEventListener("mouseleave", leave); });
+  }
+
+  magnet(g, root) {
+    const wraps = Array.prototype.slice.call(root.querySelectorAll("[data-magnetic]"));
+    if (!wraps.length || window.matchMedia("(hover: none)").matches) return;
+    const tos = wraps.map((w) => ({
+      el: w,
+      x: g.quickTo(w, "x", { duration: 0.4, ease: "power3" }),
+      y: g.quickTo(w, "y", { duration: 0.4, ease: "power3" })
+    }));
+    const move = (e) => {
+      tos.forEach((t) => {
+        const r = t.el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        const near = Math.abs(dx) < r.width / 2 + 70 && Math.abs(dy) < r.height / 2 + 50;
+        t.x(near ? g.utils.clamp(-14, 14, dx * 0.26) : 0);
+        t.y(near ? g.utils.clamp(-9, 9, dy * 0.26) : 0);
+      });
+    };
+    window.addEventListener("mousemove", move);
+    this._cleanups.push(() => window.removeEventListener("mousemove", move));
+  }
+
+  rail(root) {
+    const rail = root.querySelector("[data-rail]");
+    if (!rail) return;
+    let down = false, startX = 0, startL = 0, moved = 0;
+    const pd = (e) => {
+      if (e.pointerType === "touch") return;
+      down = true; moved = 0; startX = e.clientX; startL = rail.scrollLeft;
+      rail.style.cursor = "grabbing"; rail.style.scrollSnapType = "none";
+    };
+    const pm = (e) => {
+      if (!down) return;
+      const d = e.clientX - startX;
+      moved = Math.abs(d);
+      rail.scrollLeft = startL - d;
+      if (moved > 4) e.preventDefault();
+    };
+    const pu = () => {
+      if (!down) return;
+      down = false; rail.style.cursor = "grab"; rail.style.scrollSnapType = "x mandatory";
+    };
+    rail.addEventListener("pointerdown", pd);
+    window.addEventListener("pointermove", pm, { passive: false });
+    window.addEventListener("pointerup", pu);
+    rail.addEventListener("dragstart", (e) => e.preventDefault());
+    this._cleanups.push(() => {
+      rail.removeEventListener("pointerdown", pd);
+      window.removeEventListener("pointermove", pm);
+      window.removeEventListener("pointerup", pu);
+    });
+  }
+
+  componentWillUnmount() {
+    this._dead = true;
+    clearTimeout(this._safety);
+    clearTimeout(this._heroSafety);
+    clearTimeout(this._railT);
+    (this._cleanups || []).forEach((fn) => { try { fn(); } catch (e) {} });
+    if (this.mm) { try { this.mm.revert(); } catch (e) {} }
+    if (this.ctx) { try { this.ctx.revert(); } catch (e) {} }
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+:root{
+  /* Warm, pink-tinted shadows only — never neutral grey/black. */
+  --shadow-hairline:0 1px 0 var(--ink-100);
+  --shadow-xs:0 1px 2px rgba(107,60,74,.08);
+  --shadow-sm:0 2px 6px -2px rgba(107,60,74,.12);
+  --shadow-md:0 8px 20px -10px rgba(107,60,74,.20);
+  --shadow-lg:0 18px 40px -18px rgba(107,60,74,.26);
+  --shadow-lift:0 14px 28px -14px rgba(107,60,74,.28);
+  --shadow-inset-top:inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-press:inset 0 2px 4px rgba(107,60,74,.18);
+  /* Focus ring — sakura halo, matches the mark's own glow */
+  --ring:0 0 0 3px var(--sakura-300);
+  --ring-berry:0 0 0 3px rgba(205,48,65,.28);
+  /* Borders */
+  --border-hairline:1px solid var(--ink-100);
+  --border-soft:1px solid var(--sakura-200);
+  --border-ink:1.5px solid var(--ink-900);
+  --border-ink-heavy:2.5px solid var(--ink-900);
+}

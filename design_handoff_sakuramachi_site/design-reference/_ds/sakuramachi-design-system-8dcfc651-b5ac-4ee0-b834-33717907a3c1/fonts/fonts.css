@@ -1,0 +1,9 @@
+/* Sakuramachi webfonts.
+   SUBSTITUTION NOTICE: no font binaries were supplied with the brand assets.
+   The logotype is a hand-drawn monoline signature; "Nothing You Could Do" is the
+   closest Google Fonts match and is used only for the script accent.
+   Zen Maru Gothic / Zen Kaku Gothic New were chosen for their rounded, kana-capable
+   forms which echo the hand-drawn line of the logo illustration.
+   To self-host, download the woff2 files and replace this @import with @font-face
+   rules pointing at the local binaries. */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Nothing+You+Could+Do&family=DM+Mono:wght@400;500&display=swap");

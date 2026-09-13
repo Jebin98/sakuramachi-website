@@ -1,0 +1,12 @@
+/* Sakuramachi webfonts.
+   SUBSTITUTION NOTICE: no font binaries were supplied with the brand assets.
+   The wordmark is hand-lettered (see assets/logo-sakuramachi.jpeg), not a typeface.
+   These are Google Fonts chosen as the nearest match — see readme.md > VISUAL FOUNDATIONS. */
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Zen+Maru+Gothic:wght@300;400;500;700;900&family=Caveat:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap");
+
+:root{
+  --font-display:"Marcellus",'Hiragino Mincho ProN',serif;
+  --font-body:"Zen Maru Gothic",'Hiragino Maru Gothic ProN',system-ui,sans-serif;
+  --font-script:"Caveat",'Segoe Script',cursive;
+  --font-mono:"DM Mono",ui-monospace,monospace;
+}

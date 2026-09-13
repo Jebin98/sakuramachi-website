@@ -1,0 +1,117 @@
+@import "../styles/tokens/colors.css";
+@import "../styles/tokens/typography.css";
+@import "../styles/tokens/spacing.css";
+@import "../styles/tokens/radii.css";
+@import "../styles/tokens/shadows.css";
+@import "../styles/tokens/motion.css";
+@import "../styles/tokens/semantic.css";
+
+/* Font families. next/font self-hosts all four and hands us the variables in layout.tsx;
+   the fallback stacks are the same ones the design system shipped with. */
+:root {
+  --font-display: var(--font-marcellus), "Hiragino Mincho ProN", serif;
+  --font-body: var(--font-zen-maru), "Hiragino Maru Gothic ProN", system-ui, sans-serif;
+  --font-script: var(--font-caveat), "Segoe Script", cursive;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+/* The palette is light-only. Declaring it stops a forced-dark UA from recolouring
+   scrollbars and native controls against a cream page. */
+html { scroll-behavior: smooth; color-scheme: light; }
+
+body {
+  margin: 0;
+  /* Clip the ticker's overhang. This belongs on body, not on a wrapper div: `overflow-x`
+     on an ordinary element promotes the other axis to `auto`, turning it into a scroll
+     container, and Chrome then never loads the `loading="lazy"` images inside it. On body
+     the value propagates to the viewport instead and no scroll container is created. */
+  overflow-x: hidden;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); }
+
+/* `manipulation` drops the 300ms wait for a double-tap-to-zoom that never comes, so a
+   tap on a CTA registers immediately. The grey flash is replaced by the real :active
+   states each control already carries. */
+a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  color: var(--text-heading);
+}
+
+p { margin: 0; }
+img { display: block; }
+
+[data-rail] { scrollbar-width: none; -ms-overflow-style: none; }
+[data-rail]::-webkit-scrollbar { display: none; }
+
+/* The ring is an `outline`, not a `box-shadow`, on purpose. Several components set
+   `box-shadow` inline for their own elevation, and an inline value outranks every
+   selector — which silently swallowed the ring on the filter tabs and on every card.
+   Nothing in this codebase sets `outline` inline, so this one rule cannot be clobbered. */
+:focus-visible { outline: 3px solid var(--sakura-500); outline-offset: 2px; }
+
+/* Off-screen until focused, then pinned over the sticky header. `left` rather than
+   `display: none`, so it stays in the tab order. */
+.sm-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+}
+.sm-skip-link:focus-visible {
+  position: fixed;
+  left: var(--page-gutter);
+  /* Below the header, not inside it. At the old top-left spot this pill covered the logo,
+     and shrinking alone could not fix that: the logo starts 50px from the page edge, which
+     is narrower than any readable label. `--header-h` is measured at runtime by Header.tsx,
+     because the nav wraps to a second row on narrow viewports — a fixed offset would drop
+     this back on top of the mark at exactly those widths. */
+  top: calc(var(--header-h, 72px) + 8px);
+  padding: 7px 14px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-card);
+  color: var(--text-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  box-shadow: var(--shadow-md);
+}
+
+/* Footer links set their colour here, not inline: an inline colour outranks every
+   selector, which left these with no hover state at all. */
+.sm-footer-link {
+  color: var(--cream-50);
+  font-size: var(--text-sm);
+  transition: color var(--dur-fast) var(--ease-drift);
+}
+.sm-footer-link:hover { color: var(--sakura-200); }
+.sm-footer-link[data-accent] { color: var(--sakura-300); }
+.sm-footer-link[data-accent]:hover { color: var(--sakura-200); }
+
+#sm-grid [data-cat] { display: grid; }
+#sm-grid [data-cat] > * { width: 100%; min-width: 0; }
+/* Reserves the text block's height so a card that lost its katakana line still matches
+   the height of its neighbours. The card root is an <a>, not an <article>, because every
+   tile is a link to the DM. */
+#sm-grid [data-product-card] > div + div { min-height: 116px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

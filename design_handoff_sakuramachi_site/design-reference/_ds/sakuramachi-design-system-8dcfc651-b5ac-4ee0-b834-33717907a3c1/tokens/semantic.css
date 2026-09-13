@@ -1,0 +1,45 @@
+/* Semantic aliases — application code should reach for these, not the base scale. */
+:root{
+  /* Text */
+  --text-heading:var(--ink-900);
+  --text-body:var(--ink-700);
+  --text-muted:var(--ink-500);
+  --text-faint:var(--ink-300);
+  --text-inverse:var(--cream-100);
+  --text-on-accent:var(--cream-100);
+  --text-link:var(--berry-600);
+  --text-link-hover:var(--berry-500);
+  --text-price:var(--ink-900);
+
+  /* Surfaces */
+  --surface-page:var(--paper);
+  --surface-card:var(--white);
+  --surface-raised:var(--cream-50);
+  --surface-blush:var(--sakura-100);
+  --surface-blush-strong:var(--sakura-200);
+  --surface-cream:var(--cream-200);
+  --surface-ink:var(--ink-900);
+  --surface-overlay:rgba(21,16,17,.44);
+  --surface-disabled:var(--ink-50);
+
+  /* Lines */
+  --border-card:var(--ink-100);
+  --border-quiet:var(--sakura-200);
+  --border-strong:var(--ink-900);
+  --border-field:var(--ink-200);
+  --border-field-hover:var(--ink-300);
+
+  /* Accent — strawberry is the only call-to-action colour */
+  --accent:var(--berry-500);
+  --accent-hover:var(--berry-600);
+  --accent-press:var(--berry-700);
+  --accent-quiet:var(--berry-100);
+  --accent-alt:var(--sakura-500);
+
+  /* Status */
+  --success:var(--matcha-600);--success-quiet:var(--matcha-100);
+  --warning:var(--sponge-500);--warning-quiet:var(--sponge-100);
+  --danger:var(--berry-600);--danger-quiet:var(--berry-100);
+  --info:var(--sakura-700);--info-quiet:var(--sakura-100);
+  --sold-out:var(--ink-400);
+}
